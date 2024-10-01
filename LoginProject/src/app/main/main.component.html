@@ -1,0 +1,36 @@
+ <app-header></app-header>
+
+<div class="save-employee-form">
+  <h2>Add New Employee</h2>
+  <form >
+    <div>
+      <label for="first_Name">First Name:</label>
+      <input type="text" [(ngModel)]="newEmployee.first_Name" name="first_Name" required />   
+    </div>
+
+    <div>
+    <label for="last_Name">Last Name:</label>
+    <input type="text" [(ngModel)]="newEmployee.last_Name" name="last_Name" required />
+    </div>
+
+
+    <div>
+    <label for="position">Position:</label>
+    <input type="text" [(ngModel)]="newEmployee.position"  name="position" required />
+    </div>
+
+
+    <!-- <button type="submit">Save Employee</button> -->
+    <button *ngIf="newEmployee.first_Name && newEmployee.last_Name && newEmployee.position" (click)="saveEmployee()">Save Employee</button>
+  </form>
+</div>
+
+
+
+<div class="employee-cards">
+  <app-card
+    *ngFor="let employee of employees"
+    [data]="employee"
+    (delete)="deleteEmployee(employee.id)">
+  </app-card>
+</div>
